@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ViewControllerThree: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let myFriendsArray = ["Justin", "Kyle", "Shayna", "Dexsie", "Nicole"]
     
     @IBOutlet var tableView: UITableView!
+    
     override func viewDidLoad() {
         self.tableView.dataSource = self
         super.viewDidLoad()
@@ -27,12 +28,16 @@ class ViewControllerThree: UIViewController, UITableViewDataSource, UITableViewD
         return 1;
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return myFriendsArray.count
+        
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->
         UITableViewCell {
             
-            let cell = tableView.dequeueReuseableCell(withIdentifier:"cellReuseIdentifier")!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier")!
             let text = myFriendsArray[indexPath.row]
             cell.textLabel?.text = text
             return cell
+}
 }
